@@ -24,7 +24,6 @@
     <WindowsPersistSimpleIdentifiers />
     <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
     <WorksheetBackgroundTransparency />
-    <ZoneBackgroundTransparency />
   </document-format-change-manifest>
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
@@ -661,7 +660,6 @@
         </view>
         <style>
           <style-rule element='axis'>
-            <format attr='height' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='37' />
             <encoding attr='space' class='1' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[usr:Calculation_0115782054653952:qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
             <encoding attr='space' class='0' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[usr:Calculation_0115782054653952:qk]' field-type='quantitative' max='18.0' min='9.0' range-type='fixed' scope='rows' type='space' />
             <format attr='display' class='1' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[usr:Calculation_0115782054653952:qk]' scope='rows' value='false' />
@@ -677,8 +675,6 @@
             <format attr='border-style' data-class='total' value='none' />
           </style-rule>
           <style-rule element='label'>
-            <format attr='text-orientation' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='0' />
-            <format attr='font-size' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='7' />
             <format attr='text-format' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[usr:Calculation_0115782054653952:qk]' value='n#,##0&quot;°C&quot;;-#,##0&quot;°C&quot;' />
           </style-rule>
           <style-rule element='pane'>
@@ -703,13 +699,13 @@
             <format attr='line-visibility' scope='cols' value='off' />
           </style-rule>
           <style-rule element='quick-filter'>
-            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='Year of Date'>
+            <format attr='color' value='#000000' />
+            <format attr='background-color' value='#2a6cb3' />
+            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' value='Year of Date'>
               <formatted-text>
                 <run fontalignment='1'>Year of Date</run>
               </formatted-text>
             </format>
-            <format attr='color' value='#000000' />
-            <format attr='background-color' value='#2a6cb3' />
           </style-rule>
           <style-rule element='quick-filter-title'>
             <format attr='color' value='#ffffff' />
@@ -1052,13 +1048,6 @@
           <style-rule element='zeroline'>
             <format attr='stroke-size' scope='cols' value='0' />
             <format attr='line-visibility' scope='cols' value='off' />
-          </style-rule>
-          <style-rule element='quick-filter'>
-            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='Year of Date'>
-              <formatted-text>
-                <run fontalignment='1' fontcolor='#f5f5f5'>Year of Date</run>
-              </formatted-text>
-            </format>
           </style-rule>
         </style>
         <panes>
@@ -1484,12 +1473,12 @@
             <format attr='geo-area-type' value='State' />
           </style-rule>
           <style-rule element='quick-filter'>
-            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' value='Year of Date'>
+            <format attr='color' value='#000000' />
+            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' value='Year of Date'>
               <formatted-text>
                 <run fontalignment='1' fontcolor='#ffffff'>Year of Date</run>
               </formatted-text>
             </format>
-            <format attr='color' value='#000000' />
           </style-rule>
         </style>
         <panes>
@@ -2056,6 +2045,13 @@
             <format attr='stroke-size' scope='cols' value='0' />
             <format attr='line-visibility' scope='cols' value='off' />
           </style-rule>
+          <style-rule element='quick-filter'>
+            <format attr='title' field='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' value='Year of Date'>
+              <formatted-text>
+                <run fontalignment='1'>Year of Date</run>
+              </formatted-text>
+            </format>
+          </style-rule>
         </style>
         <panes>
           <pane id='1' selection-relaxation-option='selection-relaxation-allow'>
@@ -2480,103 +2476,23 @@
     <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
       <style />
       <size maxheight='592' maxwidth='1130' minheight='592' minwidth='1130' sizing-mode='fixed' />
-      <datasources />
-      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      <datasources>
+        <datasource caption='locations_clean+' name='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u'>
+        <column caption='Date' datatype='date' name='[date (weather.csv)]' role='dimension' type='ordinal' />
+        <column-instance column='[date (weather.csv)]' derivation='Year' name='[yr:date (weather.csv):ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='100000' id='131' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-            <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-              <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
-                <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
-                  <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
-                    <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
-                      <zone fixed-size='42' h='8108' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='619' y='28378'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone fixed-size='93' h='8108' id='97' is-fixed='true' type-v2='dashboard-object' w='8231' x='5044' y='28378'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>OVERVIEW</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#4e79a7' />
-                        <format attr='border-style' value='solid' />
-                        <format attr='border-width' value='1' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                        <format attr='background-color' value='#175bad' />
-                      </zone-style>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
-                      <zone fixed-size='42' h='8446' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='531' y='36655'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8446' id='104' type-v2='dashboard-object' w='8407' x='4956' y='36655'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>MAP</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
-                      <zone fixed-size='42' h='8446' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='531' y='45101'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='15' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8446' id='108' type-v2='dashboard-object' w='8407' x='4956' y='45101'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>SEASONS</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                    </zone>
-                    <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
-                      <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4244' x='531' y='53547'>
-                        <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+          <zone h='100000' id='144' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='131' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+              <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+                <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
+                  <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
+                    <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
+                      <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
+                        <zone fixed-size='42' h='8108' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='619' y='28378'>
                           <zone-style>
                             <format attr='border-color' value='#000000' />
                             <format attr='border-style' value='none' />
@@ -2585,15 +2501,190 @@
                             <format attr='padding-left' value='20' />
                           </zone-style>
                         </zone>
+                        <zone fixed-size='93' h='8108' id='97' is-fixed='true' type-v2='dashboard-object' w='8231' x='5044' y='28378'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>OVERVIEW</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                        <zone-style>
+                          <format attr='border-color' value='#4e79a7' />
+                          <format attr='border-style' value='solid' />
+                          <format attr='border-width' value='1' />
+                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                          <format attr='background-color' value='#175bad' />
+                        </zone-style>
                       </zone>
-                      <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
-                        <button action='' button-click-action-metadata='pdf' button-type='text'>
-                          <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{430A8181-F798-459A-89A0-D0B9F19F9095}&quot;</export-button-action>
-                          <button-visual-state>
-                            <caption>DOWNLOAD</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
+                      <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
+                        <zone fixed-size='42' h='8446' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='531' y='36655'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='20' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8446' id='104' type-v2='dashboard-object' w='8407' x='4956' y='36655'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>MAP</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
+                        <zone fixed-size='42' h='8446' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='531' y='45101'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='15' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8446' id='108' type-v2='dashboard-object' w='8407' x='4956' y='45101'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>SEASONS</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
+                        <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4243' x='531' y='53547'>
+                          <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                              <format attr='padding-left' value='20' />
+                            </zone-style>
+                          </zone>
+                        </zone>
+                        <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
+                          <button action='' button-click-action-metadata='pdf' button-type='text'>
+                            <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{430A8181-F798-459A-89A0-D0B9F19F9095}&quot;</export-button-action>
+                            <button-visual-state>
+                              <caption>DOWNLOAD</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin-left' value='6' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                  <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='10' />
+                      <format attr='margin-top' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                      <format attr='padding' value='8' />
+                    </zone-style>
+                  </zone>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='background-color' value='#144d94' />
+                  </zone-style>
+                </zone>
+                <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86627' x='13363' y='0'>
+                  <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86096' x='13363' y='0'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-top' value='12' />
+                      <format attr='margin-bottom' value='0' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86096' x='13363' y='7601'>
+                    <formatted-text>
+                      <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='25' forceUpdate='true' h='4899' id='56' is-fixed='true' type-v2='text' w='86096' x='13363' y='14695'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontsize='15'>OVERVIEW</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-bottom' value='0' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='128' h='21622' id='25' is-fixed='true' param='horz' type-v2='layout-flow' w='86096' x='13363' y='19594'>
+                    <zone fixed-size='233' h='21622' id='29' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='13363' y='19594'>
+                      <zone fixed-size='69' h='19932' id='35' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperatures (1).png' type-v2='bitmap' w='6991' x='13805' y='20439'>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-top' value='10' />
+                          <format attr='margin-right' value='0' />
+                          <format attr='margin-bottom' value='10' />
+                          <format attr='margin-left' value='10' />
+                        </zone-style>
+                      </zone>
+                      <zone h='19932' id='34' name='AVG temp' show-title='false' w='13452' x='20796' y='20439'>
+                        <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
                         <zone-style>
                           <format attr='border-color' value='#000000' />
                           <format attr='border-style' value='none' />
@@ -2602,221 +2693,133 @@
                           <format attr='margin-left' value='0' />
                         </zone-style>
                       </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#75a1c7' />
+                        <format attr='border-style' value='solid' />
+                        <format attr='border-width' value='1' />
+                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+                        <format attr='margin' value='4' />
+                        <format attr='background-color' value='#2a62b1' />
+                      </zone-style>
                     </zone>
-                    <zone-style>
-                      <format attr='border-color' value='#000000' />
-                      <format attr='border-style' value='none' />
-                      <format attr='border-width' value='0' />
-                      <format attr='margin-left' value='6' />
-                    </zone-style>
+                    <zone fixed-size='233' h='21622' id='31' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='34690' y='19594'>
+                      <zone fixed-size='74' h='19932' id='38' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperature.png' type-v2='bitmap' w='7434' x='35132' y='20439'>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-top' value='10' />
+                          <format attr='margin-right' value='0' />
+                          <format attr='margin-bottom' value='10' />
+                          <format attr='margin-left' value='10' />
+                        </zone-style>
+                      </zone>
+                      <zone h='19932' id='37' name='Max temp' show-title='false' w='13009' x='42566' y='20439'>
+                        <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-left' value='0' />
+                        </zone-style>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#75a1c7' />
+                        <format attr='border-style' value='solid' />
+                        <format attr='border-width' value='1' />
+                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+                        <format attr='margin' value='4' />
+                        <format attr='background-color' value='#2a62b1' />
+                      </zone-style>
+                    </zone>
+                    <zone fixed-size='232' h='21622' id='30' is-fixed='true' param='horz' type-v2='layout-flow' w='21239' x='56017' y='19594'>
+                      <zone fixed-size='80' h='19932' id='40' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperature (1).png' type-v2='bitmap' w='7965' x='56459' y='20439'>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-top' value='10' />
+                          <format attr='margin-right' value='0' />
+                          <format attr='margin-bottom' value='10' />
+                          <format attr='margin-left' value='10' />
+                        </zone-style>
+                      </zone>
+                      <zone h='19932' id='41' name='Min temp' show-title='false' w='12390' x='64424' y='20439'>
+                        <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-left' value='0' />
+                        </zone-style>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#75a1c7' />
+                        <format attr='border-style' value='solid' />
+                        <format attr='border-width' value='1' />
+                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+                        <format attr='margin' value='4' />
+                        <format attr='background-color' value='#2a62b1' />
+                      </zone-style>
+                    </zone>
+                    <zone fixed-size='233' h='21622' id='28' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='77256' y='19594'>
+                      <zone fixed-size='79' h='19932' id='44' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/weather (1).png' type-v2='bitmap' w='7876' x='77698' y='20439'>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-top' value='10' />
+                          <format attr='margin-right' value='0' />
+                          <format attr='margin-bottom' value='10' />
+                          <format attr='margin-left' value='10' />
+                        </zone-style>
+                      </zone>
+                      <zone h='19932' id='43' name='Data Points' show-title='false' w='12567' x='85574' y='20439'>
+                        <layout-cache cell-count-h='1' type-h='cell' type-w='cell' />
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin' value='4' />
+                          <format attr='margin-left' value='0' />
+                        </zone-style>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#75a1c7' />
+                        <format attr='border-style' value='solid' />
+                        <format attr='border-width' value='1' />
+                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+                        <format attr='margin' value='4' />
+                        <format attr='background-color' value='#2a62b1' />
+                      </zone-style>
+                    </zone>
                   </zone>
-                </zone>
-                <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='10' />
-                    <format attr='margin-top' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                    <format attr='padding' value='8' />
-                  </zone-style>
-                </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='background-color' value='#144d94' />
-                </zone-style>
-              </zone>
-              <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86627' x='13363' y='0'>
-                <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86096' x='13363' y='0'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-top' value='12' />
-                    <format attr='margin-bottom' value='0' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86096' x='13363' y='7601'>
-                  <formatted-text>
-                    <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='25' forceUpdate='true' h='4899' id='56' is-fixed='true' type-v2='text' w='86096' x='13363' y='14695'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontsize='15'>OVERVIEW</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-bottom' value='0' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='128' h='21622' id='25' is-fixed='true' param='horz' type-v2='layout-flow' w='86096' x='13363' y='19594'>
-                  <zone fixed-size='233' h='21622' id='29' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='13363' y='19594'>
-                    <zone fixed-size='69' h='19932' id='35' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperatures (1).png' type-v2='bitmap' w='6991' x='13805' y='20439'>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-top' value='10' />
-                        <format attr='margin-right' value='0' />
-                        <format attr='margin-bottom' value='10' />
-                        <format attr='margin-left' value='10' />
-                      </zone-style>
-                    </zone>
-                    <zone h='19932' id='34' name='AVG temp' show-title='false' w='13452' x='20796' y='20439'>
-                      <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-left' value='0' />
-                      </zone-style>
-                    </zone>
-                    <zone-style>
-                      <format attr='border-color' value='#75a1c7' />
-                      <format attr='border-style' value='solid' />
-                      <format attr='border-width' value='1' />
-                      <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
-                      <format attr='margin' value='4' />
-                      <format attr='background-color' value='#2a62b1' />
-                    </zone-style>
-                  </zone>
-                  <zone fixed-size='233' h='21622' id='31' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='34690' y='19594'>
-                    <zone fixed-size='74' h='19932' id='38' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperature.png' type-v2='bitmap' w='7434' x='35132' y='20439'>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-top' value='10' />
-                        <format attr='margin-right' value='0' />
-                        <format attr='margin-bottom' value='10' />
-                        <format attr='margin-left' value='10' />
-                      </zone-style>
-                    </zone>
-                    <zone h='19932' id='37' name='Max temp' show-title='false' w='13009' x='42566' y='20439'>
-                      <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-left' value='0' />
-                      </zone-style>
-                    </zone>
+                  <zone h='58784' id='14' name='AVG temp Trend' w='86096' x='13363' y='41216'>
+                    <layout-cache cell-count-w='11' minheight='158' non-cell-size-w='48' type-h='scalable' type-w='cell' />
                     <zone-style>
                       <format attr='border-color' value='#75a1c7' />
                       <format attr='border-style' value='solid' />
                       <format attr='border-width' value='1' />
                       <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
                       <format attr='margin' value='4' />
+                      <format attr='margin-right' value='12' />
+                      <format attr='margin-bottom' value='25' />
+                      <format attr='padding-top' value='7' />
                       <format attr='background-color' value='#2a62b1' />
                     </zone-style>
                   </zone>
-                  <zone fixed-size='232' h='21622' id='30' is-fixed='true' param='horz' type-v2='layout-flow' w='21239' x='56017' y='19594'>
-                    <zone fixed-size='80' h='19932' id='40' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/temperature (1).png' type-v2='bitmap' w='7965' x='56459' y='20439'>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-top' value='10' />
-                        <format attr='margin-right' value='0' />
-                        <format attr='margin-bottom' value='10' />
-                        <format attr='margin-left' value='10' />
-                      </zone-style>
-                    </zone>
-                    <zone h='19932' id='41' name='Min temp' show-title='false' w='12390' x='64424' y='20439'>
-                      <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-left' value='0' />
-                      </zone-style>
-                    </zone>
-                    <zone-style>
-                      <format attr='border-color' value='#75a1c7' />
-                      <format attr='border-style' value='solid' />
-                      <format attr='border-width' value='1' />
-                      <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
-                      <format attr='margin' value='4' />
-                      <format attr='background-color' value='#2a62b1' />
-                    </zone-style>
-                  </zone>
-                  <zone fixed-size='233' h='21622' id='28' is-fixed='true' param='horz' type-v2='layout-flow' w='21327' x='77256' y='19594'>
-                    <zone fixed-size='79' h='19932' id='44' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/weather (1).png' type-v2='bitmap' w='7876' x='77698' y='20439'>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-top' value='10' />
-                        <format attr='margin-right' value='0' />
-                        <format attr='margin-bottom' value='10' />
-                        <format attr='margin-left' value='10' />
-                      </zone-style>
-                    </zone>
-                    <zone h='19932' id='43' name='Data Points' show-title='false' w='12567' x='85574' y='20439'>
-                      <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin' value='4' />
-                        <format attr='margin-left' value='0' />
-                      </zone-style>
-                    </zone>
-                    <zone-style>
-                      <format attr='border-color' value='#75a1c7' />
-                      <format attr='border-style' value='solid' />
-                      <format attr='border-width' value='1' />
-                      <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
-                      <format attr='margin' value='4' />
-                      <format attr='background-color' value='#2a62b1' />
-                    </zone-style>
-                  </zone>
-                </zone>
-                <zone h='58784' id='14' name='AVG temp Trend' w='86096' x='13363' y='41216'>
-                  <layout-cache cell-count-w='11' minheight='158' non-cell-size-w='48' type-h='scalable' type-w='cell' />
                   <zone-style>
-                    <format attr='border-color' value='#75a1c7' />
-                    <format attr='border-style' value='solid' />
-                    <format attr='border-width' value='1' />
-                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-right' value='12' />
-                    <format attr='margin-bottom' value='25' />
-                    <format attr='padding-top' value='7' />
-                    <format attr='background-color' value='#2a62b1' />
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin-right' value='6' />
                   </zone-style>
                 </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='margin-right' value='6' />
-                </zone-style>
               </zone>
             </zone>
           </zone>
@@ -2828,13 +2831,13 @@
             <format attr='background-color' value='#15519f' />
           </zone-style>
         </zone>
-        <zone h='7770' id='132' mode='checkdropdown' name='AVG temp Trend' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14159' x='83363' y='3041'>
+        <zone h='7432' id='145' mode='checkdropdown' name='AVG temp Trend' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='80973' y='3547'>
           <zone-style>
-            <format attr='border-color' value='#000000' />
-            <format attr='border-style' value='none' />
-            <format attr='border-width' value='0' />
-            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='5' />
-            <format attr='margin' value='0' />
+            <format attr='border-color' value='#6491bf' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+            <format attr='background-color' value='#2a62b1' />
           </zone-style>
         </zone>
       </zones>
@@ -2842,8 +2845,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='2100' minheight='2100' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='142' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97298' id='141' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
+            <zone h='100000' id='147' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97298' id='146' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
                 <zone fixed-size='131' h='28209' id='83' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -2956,7 +2959,7 @@
                   </zone-style>
                 </zone>
                 <zone fixed-size='110' h='19932' id='43' is-fixed='true' name='Data Points' show-title='false' w='12567' x='85574' y='20439'>
-                  <layout-cache cell-count-h='1' cell-count-w='1' type-h='cell' type-w='cell' />
+                  <layout-cache cell-count-h='1' type-h='cell' type-w='cell' />
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -3013,14 +3016,15 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='7770' id='132' mode='checkdropdown' name='AVG temp Trend' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14159' x='83363' y='3041'>
+                <zone h='7432' id='145' mode='checkdropdown' name='AVG temp Trend' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='80973' y='3547'>
                   <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='5' />
+                    <format attr='border-color' value='#6491bf' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
                     <format attr='margin' value='4' />
                     <format attr='padding' value='0' />
+                    <format attr='background-color' value='#2a62b1' />
                   </zone-style>
                 </zone>
                 <zone fixed-size='280' h='58784' id='14' is-fixed='true' name='AVG temp Trend' w='86096' x='13363' y='41216'>
@@ -3059,7 +3063,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -3068,7 +3072,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
+                <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
                   <button action='' button-click-action-metadata='pdf' button-type='text'>
                     <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{430A8181-F798-459A-89A0-D0B9F19F9095}&quot;</export-button-action>
                     <button-visual-state>
@@ -3101,109 +3105,23 @@
     <dashboard enable-sort-zone-taborder='true' name='Dashboard 2'>
       <style />
       <size maxheight='592' maxwidth='1130' minheight='592' minwidth='1130' sizing-mode='fixed' />
-      <datasources />
-      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      <datasources>
+        <datasource caption='locations_clean+' name='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u'>
+        <column caption='Date' datatype='date' name='[date (weather.csv)]' role='dimension' type='ordinal' />
+        <column-instance column='[date (weather.csv)]' derivation='Year' name='[yr:date (weather.csv):ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='100000' id='180' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-            <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-              <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
-                <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
-                  <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
-                    <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
-                      <zone fixed-size='42' h='8446' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='531' y='28209'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone fixed-size='93' h='8446' id='97' is-fixed='true' type-v2='dashboard-object' w='8407' x='4956' y='28209'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>OVERVIEW</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                      </zone-style>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
-                      <zone fixed-size='42' h='8108' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='619' y='36824'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8108' id='104' type-v2='dashboard-object' w='8231' x='5044' y='36824'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>MAP</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#4e79a7' />
-                        <format attr='border-style' value='solid' />
-                        <format attr='border-width' value='1' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                        <format attr='background-color' value='#175bad' />
-                      </zone-style>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
-                      <zone fixed-size='42' h='8446' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='531' y='45101'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='15' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8446' id='108' type-v2='dashboard-object' w='8407' x='4956' y='45101'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>SEASONS</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                    </zone>
-                    <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
-                      <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4244' x='531' y='53547'>
-                        <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+          <zone h='100000' id='194' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='180' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+              <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+                <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
+                  <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
+                    <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
+                      <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
+                        <zone fixed-size='42' h='8446' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='531' y='28209'>
                           <zone-style>
                             <format attr='border-color' value='#000000' />
                             <format attr='border-style' value='none' />
@@ -3212,229 +3130,322 @@
                             <format attr='padding-left' value='20' />
                           </zone-style>
                         </zone>
-                      </zone>
-                      <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
-                        <button action='' button-click-action-metadata='pdf' button-type='text'>
-                          <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{8EEBCB71-B388-4DAB-AE42-C0E4BB779199}&quot;</export-button-action>
-                          <button-visual-state>
-                            <caption>DOWNLOAD</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
+                        <zone fixed-size='93' h='8446' id='97' is-fixed='true' type-v2='dashboard-object' w='8407' x='4956' y='28209'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>OVERVIEW</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
                         <zone-style>
                           <format attr='border-color' value='#000000' />
                           <format attr='border-style' value='none' />
                           <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
+                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
                         </zone-style>
                       </zone>
+                      <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
+                        <zone fixed-size='42' h='8108' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='619' y='36824'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='20' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8108' id='104' type-v2='dashboard-object' w='8231' x='5044' y='36824'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>MAP</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                        <zone-style>
+                          <format attr='border-color' value='#4e79a7' />
+                          <format attr='border-style' value='solid' />
+                          <format attr='border-width' value='1' />
+                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                          <format attr='background-color' value='#175bad' />
+                        </zone-style>
+                      </zone>
+                      <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
+                        <zone fixed-size='42' h='8446' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='531' y='45101'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='15' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8446' id='108' type-v2='dashboard-object' w='8407' x='4956' y='45101'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>SEASONS</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
+                        <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4243' x='531' y='53547'>
+                          <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                              <format attr='padding-left' value='20' />
+                            </zone-style>
+                          </zone>
+                        </zone>
+                        <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
+                          <button action='' button-click-action-metadata='pdf' button-type='text'>
+                            <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{8EEBCB71-B388-4DAB-AE42-C0E4BB779199}&quot;</export-button-action>
+                            <button-visual-state>
+                              <caption>DOWNLOAD</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin-left' value='6' />
+                      </zone-style>
                     </zone>
+                  </zone>
+                  <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                     <zone-style>
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
                       <format attr='border-width' value='0' />
-                      <format attr='margin-left' value='6' />
+                      <format attr='margin' value='10' />
+                      <format attr='margin-top' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                      <format attr='padding' value='8' />
                     </zone-style>
                   </zone>
-                </zone>
-                <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
                     <format attr='border-width' value='0' />
-                    <format attr='margin' value='10' />
-                    <format attr='margin-top' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                    <format attr='padding' value='8' />
+                    <format attr='background-color' value='#144d94' />
                   </zone-style>
                 </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='background-color' value='#144d94' />
-                </zone-style>
-              </zone>
-              <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86637' x='13363' y='0'>
-                <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86106' x='13363' y='0'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-top' value='12' />
-                    <format attr='margin-bottom' value='0' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86106' x='13363' y='7601'>
-                  <formatted-text>
-                    <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='25' forceUpdate='true' h='4899' id='56' is-fixed='true' type-v2='text' w='86106' x='13363' y='14695'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontsize='15'>TEMPERATURE TRENDS</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-bottom' value='0' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='444' h='75000' id='124' is-fixed='true' param='vert' type-v2='layout-flow' w='86106' x='13363' y='19594'>
-                  <zone h='75000' id='125' param='horz' type-v2='layout-flow' w='86106' x='13363' y='19594'>
-                    <zone fixed-size='539' h='75000' id='126' is-fixed='true' name='Map' show-title='false' w='48407' x='13363' y='19594'>
-                      <layout-cache minheight='200' minwidth='200' type-h='scalable' type-w='scalable' />
-                      <zone-style>
-                        <format attr='border-color' value='#75a1c7' />
-                        <format attr='border-style' value='solid' />
-                        <format attr='border-width' value='1' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                        <format attr='margin' value='4' />
-                      </zone-style>
-                    </zone>
-                    <zone h='75000' id='150' param='vert' type-v2='layout-flow' w='37699' x='61770' y='19594'>
-                      <zone h='55404' id='151' name='AVG temp by reg' w='37168' x='61770' y='19594'>
-                        <layout-cache cell-count-h='14' minwidth='220' non-cell-size-h='37' type-h='cell' type-w='scalable' />
+                <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86637' x='13363' y='0'>
+                  <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86106' x='13363' y='0'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-top' value='12' />
+                      <format attr='margin-bottom' value='0' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86106' x='13363' y='7601'>
+                    <formatted-text>
+                      <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='25' forceUpdate='true' h='4899' id='56' is-fixed='true' type-v2='text' w='86106' x='13363' y='14695'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontsize='15'>TEMPERATURE TRENDS</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-bottom' value='0' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='444' h='75000' id='124' is-fixed='true' param='vert' type-v2='layout-flow' w='86106' x='13363' y='19594'>
+                    <zone h='75000' id='125' param='horz' type-v2='layout-flow' w='86106' x='13363' y='19594'>
+                      <zone fixed-size='539' h='75000' id='126' is-fixed='true' name='Map' show-title='false' w='48407' x='13363' y='19594'>
+                        <layout-cache minheight='200' minwidth='200' type-h='scalable' type-w='scalable' />
                         <zone-style>
                           <format attr='border-color' value='#75a1c7' />
                           <format attr='border-style' value='solid' />
                           <format attr='border-width' value='1' />
                           <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
                           <format attr='margin' value='4' />
-                          <format attr='padding' value='4' />
-                          <format attr='padding-top' value='0' />
-                          <format attr='background-color' value='#2a62b1' />
                         </zone-style>
                       </zone>
-                      <zone fixed-size='116' h='19595' id='160' is-fixed='true' param='horz' type-v2='layout-flow' w='37168' x='61770' y='74998'>
-                        <zone fixed-size='187' h='19595' id='162' is-fixed='true' param='horz' type-v2='layout-flow' w='36549' x='62124' y='74998'>
-                          <zone fixed-size='215' h='19595' id='165' is-fixed='true' param='vert' type-v2='layout-flow' w='18274' x='62124' y='74998'>
-                            <zone fixed-size='58' h='10473' id='169' is-fixed='true' name='Max region' show-title='false' w='18098' x='62212' y='75167'>
-                              <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                      <zone h='75000' id='150' param='vert' type-v2='layout-flow' w='37699' x='61770' y='19594'>
+                        <zone h='55404' id='151' name='AVG temp by reg' w='37168' x='61770' y='19594'>
+                          <layout-cache cell-count-h='14' minwidth='220' non-cell-size-h='37' type-h='cell' type-w='scalable' />
+                          <zone-style>
+                            <format attr='border-color' value='#75a1c7' />
+                            <format attr='border-style' value='solid' />
+                            <format attr='border-width' value='1' />
+                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding' value='4' />
+                            <format attr='padding-top' value='0' />
+                            <format attr='background-color' value='#2a62b1' />
+                          </zone-style>
+                        </zone>
+                        <zone fixed-size='116' h='19595' id='160' is-fixed='true' param='horz' type-v2='layout-flow' w='37168' x='61770' y='74998'>
+                          <zone fixed-size='187' h='19595' id='162' is-fixed='true' param='horz' type-v2='layout-flow' w='36549' x='62124' y='74998'>
+                            <zone fixed-size='215' h='19595' id='165' is-fixed='true' param='vert' type-v2='layout-flow' w='18274' x='62124' y='74998'>
+                              <zone fixed-size='58' h='10473' id='169' is-fixed='true' name='Max region' show-title='false' w='18098' x='62212' y='75167'>
+                                <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                                <zone-style>
+                                  <format attr='border-color' value='#000000' />
+                                  <format attr='border-style' value='none' />
+                                  <format attr='border-width' value='0' />
+                                  <format attr='margin' value='4' />
+                                  <format attr='margin-bottom' value='0' />
+                                </zone-style>
+                              </zone>
+                              <zone h='8784' id='170' param='horz' type-v2='layout-flow' w='18098' x='62212' y='85640'>
+                                <zone fixed-size='121' h='8784' id='171' is-fixed='true' name='Max Avg' show-title='false' w='11062' x='62212' y='85640'>
+                                  <layout-cache type-h='cell' type-w='cell' />
+                                  <zone-style>
+                                    <format attr='border-color' value='#000000' />
+                                    <format attr='border-style' value='none' />
+                                    <format attr='border-width' value='0' />
+                                    <format attr='margin' value='4' />
+                                    <format attr='margin-top' value='0' />
+                                    <format attr='margin-right' value='0' />
+                                    <format attr='margin-left' value='4' />
+                                    <format attr='padding' value='0' />
+                                    <format attr='padding-bottom' value='6' />
+                                    <format attr='padding-left' value='6' />
+                                  </zone-style>
+                                </zone>
+                                <zone h='8784' id='172' is-scaled='1' param='C:/Users/nergi/Downloads/sun.png' type-v2='bitmap' w='7036' x='73274' y='85640'>
+                                  <zone-style>
+                                    <format attr='border-color' value='#000000' />
+                                    <format attr='border-style' value='none' />
+                                    <format attr='border-width' value='0' />
+                                    <format attr='margin' value='4' />
+                                    <format attr='margin-top' value='0' />
+                                    <format attr='margin-bottom' value='11' />
+                                    <format attr='margin-left' value='0' />
+                                  </zone-style>
+                                </zone>
+                              </zone>
                               <zone-style>
-                                <format attr='border-color' value='#000000' />
-                                <format attr='border-style' value='none' />
-                                <format attr='border-width' value='0' />
-                                <format attr='margin' value='4' />
-                                <format attr='margin-bottom' value='0' />
+                                <format attr='border-color' value='#75a1c7' />
+                                <format attr='border-style' value='solid' />
+                                <format attr='border-width' value='1' />
+                                <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                                <format attr='background-color' value='#2a62b1' />
                               </zone-style>
                             </zone>
-                            <zone h='8784' id='170' param='horz' type-v2='layout-flow' w='18098' x='62212' y='85640'>
-                              <zone fixed-size='121' h='8784' id='171' is-fixed='true' name='Max Avg' show-title='false' w='11062' x='62212' y='85640'>
-                                <layout-cache type-h='cell' type-w='cell' />
+                            <zone fixed-size='284' h='19595' id='166' is-fixed='true' param='vert' type-v2='layout-flow' w='18275' x='80398' y='74998'>
+                              <zone fixed-size='58' h='10473' id='173' is-fixed='true' name='Min region' show-title='false' w='18099' x='80486' y='75167'>
+                                <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
                                 <zone-style>
                                   <format attr='border-color' value='#000000' />
                                   <format attr='border-style' value='none' />
                                   <format attr='border-width' value='0' />
                                   <format attr='margin' value='4' />
-                                  <format attr='margin-top' value='0' />
-                                  <format attr='margin-right' value='0' />
-                                  <format attr='margin-left' value='4' />
-                                  <format attr='padding' value='0' />
-                                  <format attr='padding-bottom' value='6' />
-                                  <format attr='padding-left' value='6' />
+                                  <format attr='margin-bottom' value='0' />
                                 </zone-style>
                               </zone>
-                              <zone h='8784' id='172' is-scaled='1' param='C:/Users/nergi/Downloads/sun.png' type-v2='bitmap' w='7036' x='73274' y='85640'>
-                                <zone-style>
-                                  <format attr='border-color' value='#000000' />
-                                  <format attr='border-style' value='none' />
-                                  <format attr='border-width' value='0' />
-                                  <format attr='margin' value='4' />
-                                  <format attr='margin-top' value='0' />
-                                  <format attr='margin-bottom' value='11' />
-                                  <format attr='margin-left' value='0' />
-                                </zone-style>
+                              <zone h='8784' id='174' param='horz' type-v2='layout-flow' w='18099' x='80486' y='85640'>
+                                <zone fixed-size='118' h='8784' id='175' is-fixed='true' name='Min Avg' show-title='false' w='11150' x='80486' y='85640'>
+                                  <layout-cache type-h='cell' type-w='cell' />
+                                  <zone-style>
+                                    <format attr='border-color' value='#000000' />
+                                    <format attr='border-style' value='none' />
+                                    <format attr='border-width' value='0' />
+                                    <format attr='margin' value='4' />
+                                    <format attr='margin-top' value='0' />
+                                    <format attr='padding-bottom' value='6' />
+                                    <format attr='padding-left' value='6' />
+                                  </zone-style>
+                                </zone>
+                                <zone h='8784' id='176' is-scaled='1' param='C:/Users/nergi/Downloads/temperature (1).png' type-v2='bitmap' w='6949' x='91636' y='85640'>
+                                  <zone-style>
+                                    <format attr='border-color' value='#000000' />
+                                    <format attr='border-style' value='none' />
+                                    <format attr='border-width' value='0' />
+                                    <format attr='margin' value='4' />
+                                    <format attr='margin-top' value='0' />
+                                  </zone-style>
+                                </zone>
                               </zone>
-                            </zone>
-                            <zone-style>
-                              <format attr='border-color' value='#75a1c7' />
-                              <format attr='border-style' value='solid' />
-                              <format attr='border-width' value='1' />
-                              <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                              <format attr='background-color' value='#2a62b1' />
-                            </zone-style>
-                          </zone>
-                          <zone fixed-size='284' h='19595' id='166' is-fixed='true' param='vert' type-v2='layout-flow' w='18275' x='80398' y='74998'>
-                            <zone fixed-size='58' h='10473' id='173' is-fixed='true' name='Min region' show-title='false' w='18099' x='80486' y='75167'>
-                              <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
                               <zone-style>
-                                <format attr='border-color' value='#000000' />
-                                <format attr='border-style' value='none' />
-                                <format attr='border-width' value='0' />
-                                <format attr='margin' value='4' />
-                                <format attr='margin-bottom' value='0' />
+                                <format attr='border-color' value='#75a1c7' />
+                                <format attr='border-style' value='solid' />
+                                <format attr='border-width' value='1' />
+                                <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                                <format attr='background-color' value='#2a62b1' />
                               </zone-style>
                             </zone>
-                            <zone h='8784' id='174' param='horz' type-v2='layout-flow' w='18099' x='80486' y='85640'>
-                              <zone fixed-size='118' h='8784' id='175' is-fixed='true' name='Min Avg' show-title='false' w='11150' x='80486' y='85640'>
-                                <layout-cache type-h='cell' type-w='cell' />
-                                <zone-style>
-                                  <format attr='border-color' value='#000000' />
-                                  <format attr='border-style' value='none' />
-                                  <format attr='border-width' value='0' />
-                                  <format attr='margin' value='4' />
-                                  <format attr='margin-top' value='0' />
-                                  <format attr='padding-bottom' value='6' />
-                                  <format attr='padding-left' value='6' />
-                                </zone-style>
-                              </zone>
-                              <zone h='8784' id='176' is-scaled='1' param='C:/Users/nergi/Downloads/temperature (1).png' type-v2='bitmap' w='6949' x='91636' y='85640'>
-                                <zone-style>
-                                  <format attr='border-color' value='#000000' />
-                                  <format attr='border-style' value='none' />
-                                  <format attr='border-width' value='0' />
-                                  <format attr='margin' value='4' />
-                                  <format attr='margin-top' value='0' />
-                                </zone-style>
-                              </zone>
-                            </zone>
-                            <zone-style>
-                              <format attr='border-color' value='#75a1c7' />
-                              <format attr='border-style' value='solid' />
-                              <format attr='border-width' value='1' />
-                              <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                              <format attr='background-color' value='#2a62b1' />
-                            </zone-style>
                           </zone>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin-right' value='3' />
+                            <format attr='margin-left' value='4' />
+                          </zone-style>
                         </zone>
                         <zone-style>
                           <format attr='border-color' value='#000000' />
                           <format attr='border-style' value='none' />
                           <format attr='border-width' value='0' />
-                          <format attr='margin-right' value='3' />
-                          <format attr='margin-left' value='4' />
+                          <format attr='margin-right' value='6' />
                         </zone-style>
                       </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin-right' value='6' />
-                      </zone-style>
                     </zone>
                   </zone>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin-right' value='6' />
+                  </zone-style>
                 </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='margin-right' value='6' />
-                </zone-style>
               </zone>
             </zone>
           </zone>
@@ -3455,13 +3466,13 @@
             <format attr='background-color' value='#2a62b1' />
           </zone-style>
         </zone>
-        <zone h='7939' id='181' mode='checkdropdown' name='Map' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14425' x='83186' y='3041'>
+        <zone h='7432' id='195' mode='checkdropdown' name='Map' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='81062' y='3547'>
           <zone-style>
-            <format attr='border-color' value='#000000' />
-            <format attr='border-style' value='none' />
-            <format attr='border-width' value='0' />
-            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='7' />
-            <format attr='background-color' value='#2a6cb3' />
+            <format attr='border-color' value='#6491bf' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+            <format attr='background-color' value='#2a62b1' />
           </zone-style>
         </zone>
       </zones>
@@ -3469,8 +3480,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1900' minheight='1900' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='192' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97298' id='191' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
+            <zone h='100000' id='197' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97298' id='196' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
                 <zone fixed-size='131' h='28209' id='83' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -3516,15 +3527,15 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='7939' id='181' mode='checkdropdown' name='Map' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14425' x='83186' y='3041'>
+                <zone h='7432' id='195' mode='checkdropdown' name='Map' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='81062' y='3547'>
                   <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='7' />
+                    <format attr='border-color' value='#6491bf' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
                     <format attr='margin' value='4' />
                     <format attr='padding' value='0' />
-                    <format attr='background-color' value='#2a6cb3' />
+                    <format attr='background-color' value='#2a62b1' />
                   </zone-style>
                 </zone>
                 <zone fixed-size='280' h='75000' id='126' is-fixed='true' name='Map' show-title='false' w='48407' x='13363' y='19594'>
@@ -3633,7 +3644,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -3642,7 +3653,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
+                <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
                   <button action='' button-click-action-metadata='pdf' button-type='text'>
                     <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{8EEBCB71-B388-4DAB-AE42-C0E4BB779199}&quot;</export-button-action>
                     <button-visual-state>
@@ -3733,109 +3744,23 @@
     <dashboard enable-sort-zone-taborder='true' name='Dashboard 3'>
       <style />
       <size maxheight='592' maxwidth='1130' minheight='592' minwidth='1130' sizing-mode='fixed' />
-      <datasources />
-      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      <datasources>
+        <datasource caption='locations_clean+' name='federated.1j9qd3t01qob8y1cftrih18sft3u' />
+      </datasources>
+      <datasource-dependencies datasource='federated.1j9qd3t01qob8y1cftrih18sft3u'>
+        <column caption='Date' datatype='date' name='[date (weather.csv)]' role='dimension' type='ordinal' />
+        <column-instance column='[date (weather.csv)]' derivation='Year' name='[yr:date (weather.csv):ok]' pivot='key' type='ordinal' />
+      </datasource-dependencies>
       <zones>
         <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
-          <zone h='100000' id='180' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-            <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
-              <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
-                <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
-                  <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
-                    <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
-                      <zone fixed-size='42' h='8446' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='531' y='28209'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone fixed-size='93' h='8446' id='97' is-fixed='true' type-v2='dashboard-object' w='8407' x='4956' y='28209'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>OVERVIEW</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                      </zone-style>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
-                      <zone fixed-size='42' h='8446' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='531' y='36655'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='20' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8446' id='104' type-v2='dashboard-object' w='8407' x='4956' y='36655'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>MAP</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                    </zone>
-                    <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
-                      <zone fixed-size='42' h='8108' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='619' y='45270'>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='padding-left' value='15' />
-                        </zone-style>
-                      </zone>
-                      <zone h='8108' id='108' type-v2='dashboard-object' w='8231' x='5044' y='45270'>
-                        <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
-                          <button-visual-state>
-                            <caption>SEASONS</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
-                        <zone-style>
-                          <format attr='border-color' value='#000000' />
-                          <format attr='border-style' value='none' />
-                          <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#4e79a7' />
-                        <format attr='border-style' value='solid' />
-                        <format attr='border-width' value='1' />
-                        <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                        <format attr='background-color' value='#175bad' />
-                      </zone-style>
-                    </zone>
-                    <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
-                      <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4244' x='531' y='53547'>
-                        <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+          <zone h='100000' id='208' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+            <zone h='100000' id='180' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+              <zone h='100000' id='3' param='horz' type-v2='layout-flow' w='100000' x='0' y='0'>
+                <zone fixed-size='151' h='100000' id='23' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='0'>
+                  <zone h='71791' id='90' is-fixed='true' type-v2='layout-basic' w='13363' x='0' y='28209'>
+                    <zone h='71791' id='91' param='vert' type-v2='layout-flow' w='13363' x='0' y='28209'>
+                      <zone fixed-size='50' h='8446' id='88' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='28209'>
+                        <zone fixed-size='42' h='8446' id='96' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/home.png' type-v2='bitmap' w='4425' x='531' y='28209'>
                           <zone-style>
                             <format attr='border-color' value='#000000' />
                             <format attr='border-style' value='none' />
@@ -3844,21 +3769,292 @@
                             <format attr='padding-left' value='20' />
                           </zone-style>
                         </zone>
-                      </zone>
-                      <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
-                        <button action='' button-click-action-metadata='pdf' button-type='text'>
-                          <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{DE2F3C5E-CC43-4E6D-8E6C-3A16DAD6E443}&quot;</export-button-action>
-                          <button-visual-state>
-                            <caption>DOWNLOAD</caption>
-                            <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
-                          </button-visual-state>
-                        </button>
+                        <zone fixed-size='93' h='8446' id='97' is-fixed='true' type-v2='dashboard-object' w='8407' x='4956' y='28209'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>OVERVIEW</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
                         <zone-style>
                           <format attr='border-color' value='#000000' />
                           <format attr='border-style' value='none' />
                           <format attr='border-width' value='0' />
-                          <format attr='margin' value='4' />
-                          <format attr='margin-left' value='0' />
+                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                        </zone-style>
+                      </zone>
+                      <zone fixed-size='50' h='8446' id='101' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='36655'>
+                        <zone fixed-size='42' h='8446' id='103' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/map.png' type-v2='bitmap' w='4425' x='531' y='36655'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='20' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8446' id='104' type-v2='dashboard-object' w='8407' x='4956' y='36655'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>MAP</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone fixed-size='50' h='8446' id='105' is-fixed='true' param='horz' type-v2='layout-flow' w='12832' x='531' y='45101'>
+                        <zone fixed-size='42' h='8108' id='107' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/season.png' type-v2='bitmap' w='4425' x='619' y='45270'>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='padding-left' value='15' />
+                          </zone-style>
+                        </zone>
+                        <zone h='8108' id='108' type-v2='dashboard-object' w='8231' x='5044' y='45270'>
+                          <button action='tabdoc:goto-sheet window-id=&quot;{C0067616-516D-4123-AF34-D0E853150529}&quot;' button-type='text'>
+                            <button-visual-state>
+                              <caption>SEASONS</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                        <zone-style>
+                          <format attr='border-color' value='#4e79a7' />
+                          <format attr='border-style' value='solid' />
+                          <format attr='border-width' value='1' />
+                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                          <format attr='background-color' value='#175bad' />
+                        </zone-style>
+                      </zone>
+                      <zone fixed-size='56' h='9459' id='115' is-fixed='true' type-v2='layout-basic' w='12832' x='531' y='53547'>
+                        <zone h='9459' id='112' param='horz' type-v2='layout-flow' w='4243' x='531' y='53547'>
+                          <zone h='9459' id='114' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                              <format attr='padding-left' value='20' />
+                            </zone-style>
+                          </zone>
+                        </zone>
+                        <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
+                          <button action='' button-click-action-metadata='pdf' button-type='text'>
+                            <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{DE2F3C5E-CC43-4E6D-8E6C-3A16DAD6E443}&quot;</export-button-action>
+                            <button-visual-state>
+                              <caption>DOWNLOAD</caption>
+                              <button-caption-font-style fontcolor='#ffffff' fontname='Tableau Bold' />
+                            </button-visual-state>
+                          </button>
+                          <zone-style>
+                            <format attr='border-color' value='#000000' />
+                            <format attr='border-style' value='none' />
+                            <format attr='border-width' value='0' />
+                            <format attr='margin' value='4' />
+                            <format attr='margin-left' value='0' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone-style>
+                        <format attr='border-color' value='#000000' />
+                        <format attr='border-style' value='none' />
+                        <format attr='border-width' value='0' />
+                        <format attr='margin-left' value='6' />
+                      </zone-style>
+                    </zone>
+                  </zone>
+                  <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='10' />
+                      <format attr='margin-top' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                      <format attr='padding' value='8' />
+                    </zone-style>
+                  </zone>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='background-color' value='#144d94' />
+                  </zone-style>
+                </zone>
+                <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86637' x='13363' y='0'>
+                  <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86106' x='13363' y='0'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-top' value='12' />
+                      <format attr='margin-bottom' value='0' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86106' x='13363' y='7601'>
+                    <formatted-text>
+                      <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='0' />
+                      <format attr='margin-bottom' value='20' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='25' forceUpdate='true' h='5405' id='56' is-fixed='true' type-v2='text' w='86106' x='13363' y='14695'>
+                    <formatted-text>
+                      <run bold='true' fontcolor='#ffffff' fontsize='15'>SEASONS &amp; EXTREMES</run>
+                    </formatted-text>
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                      <format attr='margin-bottom' value='3' />
+                    </zone-style>
+                  </zone>
+                  <zone fixed-size='444' h='75338' id='124' is-fixed='true' param='vert' type-v2='layout-flow' w='86106' x='13363' y='20100'>
+                    <zone h='75000' id='125' param='horz' type-v2='layout-flow' w='85576' x='13805' y='20269'>
+                      <zone fixed-size='709' h='75000' id='191' is-fixed='true' type-v2='layout-basic' w='62743' x='13805' y='20269'>
+                        <zone h='38683' id='186' param='vert' type-v2='layout-flow' w='62743' x='13805' y='20269'>
+                          <zone fixed-size='105' h='18581' id='188' is-fixed='true' name='Summer temp' w='62567' x='13893' y='20438'>
+                            <layout-cache cell-count-w='21' minheight='131' non-cell-size-w='44' type-h='scalable' type-w='cell' />
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                              <format attr='margin-bottom' value='1' />
+                            </zone-style>
+                          </zone>
+                          <zone fixed-size='1' h='169' id='196' is-fixed='true' type-v2='empty' w='62567' x='13893' y='39019'>
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='0' />
+                              <format attr='margin-right' value='13' />
+                              <format attr='margin-left' value='22' />
+                              <format attr='background-color' value='#15519f' />
+                            </zone-style>
+                          </zone>
+                          <zone h='18581' id='189' name='Winter temp' show-title='false' w='62567' x='13893' y='39188'>
+                            <layout-cache cell-count-w='21' minheight='126' non-cell-size-w='45' type-h='scalable' type-w='cell' />
+                            <zone-style>
+                              <format attr='border-color' value='#000000' />
+                              <format attr='border-style' value='none' />
+                              <format attr='border-width' value='0' />
+                              <format attr='margin' value='4' />
+                              <format attr='margin-top' value='1' />
+                            </zone-style>
+                          </zone>
+                          <zone-style>
+                            <format attr='border-color' value='#6491bf' />
+                            <format attr='border-style' value='solid' />
+                            <format attr='border-width' value='1' />
+                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                            <format attr='margin-bottom' value='6' />
+                            <format attr='background-color' value='#2a62b1' />
+                          </zone-style>
+                        </zone>
+                        <zone h='36317' id='192' param='vert' type-v2='layout-flow' w='21327' x='55221' y='58952'>
+                          <zone h='36317' id='190' name='AVG temp season' w='21327' x='55221' y='58952'>
+                            <layout-cache minheight='154' type-h='scalable' type-w='fixed' />
+                            <zone-style>
+                              <format attr='border-color' value='#6491bf' />
+                              <format attr='border-style' value='solid' />
+                              <format attr='border-width' value='1' />
+                              <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                              <format attr='margin' value='1' />
+                              <format attr='margin-bottom' value='3' />
+                              <format attr='margin-left' value='5' />
+                              <format attr='padding-right' value='3' />
+                              <format attr='padding-left' value='3' />
+                              <format attr='background-color' value='#2a62b1' />
+                            </zone-style>
+                          </zone>
+                        </zone>
+                        <zone h='36317' id='197' name='Temp&gt;30' w='41416' x='13805' y='58952'>
+                          <zone-style>
+                            <format attr='border-color' value='#6491bf' />
+                            <format attr='border-style' value='solid' />
+                            <format attr='border-width' value='1' />
+                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                            <format attr='margin' value='1' />
+                            <format attr='margin-right' value='2' />
+                            <format attr='padding' value='0' />
+                            <format attr='padding-right' value='4' />
+                            <format attr='padding-left' value='4' />
+                            <format attr='background-color' value='#2a62b1' />
+                          </zone-style>
+                        </zone>
+                      </zone>
+                      <zone h='75000' id='150' param='vert' type-v2='layout-flow' w='22833' x='76548' y='20269'>
+                        <zone fixed-size='225' h='39189' id='193' is-fixed='true' name='Warmest Years' w='21948' x='76902' y='20269'>
+                          <layout-cache minwidth='148' type-h='cell' type-w='scalable' />
+                          <zone-style>
+                            <format attr='border-color' value='#6491bf' />
+                            <format attr='border-style' value='solid' />
+                            <format attr='border-width' value='1' />
+                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                            <format attr='margin' value='1' />
+                            <format attr='margin-bottom' value='6' />
+                            <format attr='margin-left' value='2' />
+                            <format attr='padding-bottom' value='4' />
+                            <format attr='background-color' value='#2a62b1' />
+                          </zone-style>
+                        </zone>
+                        <zone h='35811' id='202' name='Coldest Years' w='21948' x='76902' y='59458'>
+                          <layout-cache cell-count-h='5' minwidth='148' non-cell-size-h='36' type-h='cell' type-w='scalable' />
+                          <zone-style>
+                            <format attr='border-color' value='#6491bf' />
+                            <format attr='border-style' value='solid' />
+                            <format attr='border-width' value='1' />
+                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                            <format attr='margin' value='1' />
+                            <format attr='margin-top' value='0' />
+                            <format attr='margin-bottom' value='2' />
+                            <format attr='padding' value='0' />
+                            <format attr='padding-bottom' value='5' />
+                            <format attr='background-color' value='#2a62b1' />
+                          </zone-style>
+                        </zone>
+                        <zone-style>
+                          <format attr='border-color' value='#000000' />
+                          <format attr='border-style' value='none' />
+                          <format attr='border-width' value='0' />
+                          <format attr='margin-right' value='6' />
+                          <format attr='margin-left' value='4' />
                         </zone-style>
                       </zone>
                     </zone>
@@ -3866,195 +4062,17 @@
                       <format attr='border-color' value='#000000' />
                       <format attr='border-style' value='none' />
                       <format attr='border-width' value='0' />
-                      <format attr='margin-left' value='6' />
+                      <format attr='margin' value='1' />
+                      <format attr='margin-left' value='5' />
                     </zone-style>
                   </zone>
-                </zone>
-                <zone h='28209' id='83' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
                     <format attr='border-width' value='0' />
-                    <format attr='margin' value='10' />
-                    <format attr='margin-top' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                    <format attr='padding' value='8' />
+                    <format attr='margin-right' value='6' />
                   </zone-style>
                 </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='background-color' value='#144d94' />
-                </zone-style>
-              </zone>
-              <zone h='100000' id='8' param='vert' type-v2='layout-flow' w='86637' x='13363' y='0'>
-                <zone fixed-size='33' forceUpdate='true' h='7601' id='9' is-fixed='true' type-v2='text' w='86106' x='13363' y='0'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontname='Microsoft YaHei UI' fontsize='24'>AZERWEATHER</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-top' value='12' />
-                    <format attr='margin-bottom' value='0' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='22' forceUpdate='true' h='7094' id='20' is-fixed='true' type-v2='text' w='86106' x='13363' y='7601'>
-                  <formatted-text>
-                    <run fontcolor='#ffffff' fontname='Tableau Light' fontsize='12'>   Azerbaijan Weather Analytics</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='0' />
-                    <format attr='margin-bottom' value='20' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='25' forceUpdate='true' h='5405' id='56' is-fixed='true' type-v2='text' w='86106' x='13363' y='14695'>
-                  <formatted-text>
-                    <run bold='true' fontcolor='#ffffff' fontsize='15'>SEASONS &amp; EXTREMES</run>
-                  </formatted-text>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='4' />
-                    <format attr='margin-bottom' value='3' />
-                  </zone-style>
-                </zone>
-                <zone fixed-size='444' h='75338' id='124' is-fixed='true' param='vert' type-v2='layout-flow' w='86106' x='13363' y='20100'>
-                  <zone h='75000' id='125' param='horz' type-v2='layout-flow' w='85576' x='13805' y='20269'>
-                    <zone fixed-size='709' h='75000' id='191' is-fixed='true' type-v2='layout-basic' w='62743' x='13805' y='20269'>
-                      <zone h='38683' id='186' param='vert' type-v2='layout-flow' w='62743' x='13805' y='20269'>
-                        <zone fixed-size='105' h='18581' id='188' is-fixed='true' name='Summer temp' w='62567' x='13893' y='20438'>
-                          <layout-cache cell-count-w='21' minheight='131' non-cell-size-w='44' type-h='scalable' type-w='cell' />
-                          <zone-style>
-                            <format attr='border-color' value='#000000' />
-                            <format attr='border-style' value='none' />
-                            <format attr='border-width' value='0' />
-                            <format attr='margin' value='4' />
-                            <format attr='margin-bottom' value='1' />
-                          </zone-style>
-                        </zone>
-                        <zone fixed-size='1' h='169' id='196' is-fixed='true' type-v2='empty' w='62567' x='13893' y='39019'>
-                          <zone-style>
-                            <format attr='border-color' value='#000000' />
-                            <format attr='border-style' value='none' />
-                            <format attr='border-width' value='0' />
-                            <format attr='margin' value='0' />
-                            <format attr='margin-right' value='13' />
-                            <format attr='margin-left' value='22' />
-                            <format attr='background-color' value='#15519f' />
-                          </zone-style>
-                        </zone>
-                        <zone h='18581' id='189' name='Winter temp' show-title='false' w='62567' x='13893' y='39188'>
-                          <layout-cache cell-count-w='21' minheight='126' non-cell-size-w='45' type-h='scalable' type-w='cell' />
-                          <zone-style>
-                            <format attr='border-color' value='#000000' />
-                            <format attr='border-style' value='none' />
-                            <format attr='border-width' value='0' />
-                            <format attr='margin' value='4' />
-                            <format attr='margin-top' value='1' />
-                          </zone-style>
-                        </zone>
-                        <zone-style>
-                          <format attr='border-color' value='#6491bf' />
-                          <format attr='border-style' value='solid' />
-                          <format attr='border-width' value='1' />
-                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                          <format attr='margin-bottom' value='6' />
-                          <format attr='background-color' value='#2a62b1' />
-                        </zone-style>
-                      </zone>
-                      <zone h='36317' id='192' param='vert' type-v2='layout-flow' w='21327' x='55221' y='58952'>
-                        <zone h='36317' id='190' name='AVG temp season' w='21327' x='55221' y='58952'>
-                          <layout-cache minheight='154' type-h='scalable' type-w='fixed' />
-                          <zone-style>
-                            <format attr='border-color' value='#6491bf' />
-                            <format attr='border-style' value='solid' />
-                            <format attr='border-width' value='1' />
-                            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                            <format attr='margin' value='1' />
-                            <format attr='margin-bottom' value='3' />
-                            <format attr='margin-left' value='5' />
-                            <format attr='padding-right' value='3' />
-                            <format attr='padding-left' value='3' />
-                            <format attr='background-color' value='#2a62b1' />
-                          </zone-style>
-                        </zone>
-                      </zone>
-                      <zone h='36317' id='197' name='Temp&gt;30' w='41416' x='13805' y='58952'>
-                        <zone-style>
-                          <format attr='border-color' value='#6491bf' />
-                          <format attr='border-style' value='solid' />
-                          <format attr='border-width' value='1' />
-                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                          <format attr='margin' value='1' />
-                          <format attr='margin-right' value='2' />
-                          <format attr='padding' value='0' />
-                          <format attr='padding-right' value='4' />
-                          <format attr='padding-left' value='4' />
-                          <format attr='background-color' value='#2a62b1' />
-                        </zone-style>
-                      </zone>
-                    </zone>
-                    <zone h='75000' id='150' param='vert' type-v2='layout-flow' w='22833' x='76548' y='20269'>
-                      <zone fixed-size='225' h='39189' id='193' is-fixed='true' name='Warmest Years' w='21948' x='76902' y='20269'>
-                        <layout-cache minwidth='148' type-h='cell' type-w='scalable' />
-                        <zone-style>
-                          <format attr='border-color' value='#6491bf' />
-                          <format attr='border-style' value='solid' />
-                          <format attr='border-width' value='1' />
-                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                          <format attr='margin' value='1' />
-                          <format attr='margin-bottom' value='6' />
-                          <format attr='margin-left' value='2' />
-                          <format attr='padding-bottom' value='4' />
-                          <format attr='background-color' value='#2a62b1' />
-                        </zone-style>
-                      </zone>
-                      <zone h='35811' id='202' name='Coldest Years' w='21948' x='76902' y='59458'>
-                        <layout-cache cell-count-h='5' minwidth='148' non-cell-size-h='36' type-h='cell' type-w='scalable' />
-                        <zone-style>
-                          <format attr='border-color' value='#6491bf' />
-                          <format attr='border-style' value='solid' />
-                          <format attr='border-width' value='1' />
-                          <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
-                          <format attr='margin' value='1' />
-                          <format attr='margin-top' value='0' />
-                          <format attr='margin-bottom' value='2' />
-                          <format attr='padding' value='0' />
-                          <format attr='padding-bottom' value='5' />
-                          <format attr='background-color' value='#2a62b1' />
-                        </zone-style>
-                      </zone>
-                      <zone-style>
-                        <format attr='border-color' value='#000000' />
-                        <format attr='border-style' value='none' />
-                        <format attr='border-width' value='0' />
-                        <format attr='margin-right' value='6' />
-                        <format attr='margin-left' value='4' />
-                      </zone-style>
-                    </zone>
-                  </zone>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <format attr='margin' value='1' />
-                    <format attr='margin-left' value='5' />
-                  </zone-style>
-                </zone>
-                <zone-style>
-                  <format attr='border-color' value='#000000' />
-                  <format attr='border-style' value='none' />
-                  <format attr='border-width' value='0' />
-                  <format attr='margin-right' value='6' />
-                </zone-style>
               </zone>
             </zone>
           </zone>
@@ -4066,13 +4084,13 @@
             <format attr='background-color' value='#15519f' />
           </zone-style>
         </zone>
-        <zone h='7939' id='181' mode='checkdropdown' name='AVG temp season' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14425' x='83186' y='3041'>
+        <zone h='7432' id='209' mode='checkdropdown' name='Summer temp' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='81062' y='3547'>
           <zone-style>
-            <format attr='border-color' value='#000000' />
-            <format attr='border-style' value='none' />
-            <format attr='border-width' value='0' />
-            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='7' />
-            <format attr='background-color' value='#2a6cb3' />
+            <format attr='border-color' value='#6491bf' />
+            <format attr='border-style' value='solid' />
+            <format attr='border-width' value='1' />
+            <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
+            <format attr='background-color' value='#2a62b1' />
           </zone-style>
         </zone>
       </zones>
@@ -4080,8 +4098,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='2000' minheight='2000' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='206' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='97298' id='205' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
+            <zone h='100000' id='211' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='97298' id='210' param='vert' type-v2='layout-flow' w='98584' x='708' y='1351'>
                 <zone fixed-size='131' h='28209' id='83' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/weather.png' type-v2='bitmap' w='13363' x='0' y='0'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
@@ -4134,6 +4152,17 @@
                     <format attr='border-style' value='solid' />
                     <format attr='border-width' value='1' />
                     <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='12' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                    <format attr='background-color' value='#2a62b1' />
+                  </zone-style>
+                </zone>
+                <zone h='7432' id='209' mode='checkdropdown' name='Summer temp' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date (weather.csv):ok]' type-v2='filter' values='database' w='14159' x='81062' y='3547'>
+                  <zone-style>
+                    <format attr='border-color' value='#6491bf' />
+                    <format attr='border-style' value='solid' />
+                    <format attr='border-width' value='1' />
+                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='10' />
                     <format attr='margin' value='4' />
                     <format attr='padding' value='0' />
                     <format attr='background-color' value='#2a62b1' />
@@ -4231,7 +4260,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4244' x='531' y='53547'>
+                <zone fixed-size='48' h='9459' id='114' is-fixed='true' is-scaled='1' param='C:/Users/nergi/Downloads/download.png' type-v2='bitmap' w='4243' x='531' y='53547'>
                   <zone-style>
                     <format attr='border-color' value='#000000' />
                     <format attr='border-style' value='none' />
@@ -4240,7 +4269,7 @@
                     <format attr='padding' value='0' />
                   </zone-style>
                 </zone>
-                <zone h='9459' id='117' type-v2='dashboard-object' w='8588' x='4775' y='53547'>
+                <zone h='9459' id='117' type-v2='dashboard-object' w='8589' x='4774' y='53547'>
                   <button action='' button-click-action-metadata='pdf' button-type='text'>
                     <export-button-action>tabdoc:abstract-dashboard-button-export-wrapper dashboard-button-export-type=&quot;pdf&quot; dashboarddoc-id=&quot;{DE2F3C5E-CC43-4E6D-8E6C-3A16DAD6E443}&quot;</export-button-action>
                     <button-visual-state>
@@ -4265,17 +4294,6 @@
                     <format attr='margin' value='4' />
                     <format attr='padding' value='0' />
                     <format attr='background-color' value='#2a62b1' />
-                  </zone-style>
-                </zone>
-                <zone h='7939' id='181' mode='checkdropdown' name='AVG temp season' param='[federated.1j9qd3t01qob8y1cftrih18sft3u].[yr:date:ok]' type-v2='filter' values='database' w='14425' x='83186' y='3041'>
-                  <zone-style>
-                    <format attr='border-color' value='#000000' />
-                    <format attr='border-style' value='none' />
-                    <format attr='border-width' value='0' />
-                    <_.fcp.DashboardRoundedCorners.true...format attr='corner-radius' value='7' />
-                    <format attr='margin' value='4' />
-                    <format attr='padding' value='0' />
-                    <format attr='background-color' value='#2a6cb3' />
                   </zone-style>
                 </zone>
                 <zone fixed-size='209' h='36317' id='190' is-fixed='true' name='AVG temp season' w='21327' x='55221' y='58952'>
@@ -4965,7 +4983,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='14' />
+      <active id='-1' />
       <simple-id uuid='{D3AA24B5-EAD6-49D2-9180-2F303B4962E7}' />
     </window>
     <window class='dashboard' name='Dashboard 2'>
@@ -4989,7 +5007,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='126' />
+      <active id='195' />
       <simple-id uuid='{F0D64606-BC79-4BBD-AA1A-34C6B9224D1B}' />
     </window>
     <window class='dashboard' maximized='true' name='Dashboard 3'>
@@ -5013,7 +5031,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='193' />
+      <active id='209' />
       <simple-id uuid='{C0067616-516D-4123-AF34-D0E853150529}' />
     </window>
     <window class='worksheet' name='Sheet 18'>
